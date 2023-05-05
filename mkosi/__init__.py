@@ -480,7 +480,7 @@ def install_boot_loader(state: MkosiState) -> None:
                      f])
 
     with complete_step("Installing boot loader…"):
-        run(["bootctl", "install", "--root", state.root], env={"SYSTEMD_ESP_PATH": "/boot"})
+        run(["bootctl", "install", "--root", state.root], env={"SYSTEMD_ESP_PATH": "/efi"})
 
     if state.config.secure_boot:
         assert state.config.secure_boot_key
@@ -786,6 +786,8 @@ def install_unified_kernel(state: MkosiState, roothash: Optional[str]) -> None:
             stub = state.root / f"lib/systemd/boot/efi/linux{EFI_ARCHITECTURES[state.config.architecture]}.efi.stub"
             if not stub.exists():
                 die(f"sd-stub not found at /{stub.relative_to(state.root)} in the image")
+
+            os.makedirs(os.path.dirname(boot_binary), exist_ok=True)
 
             cmd: list[PathString] = [
                 shutil.which("ukify") or "/usr/lib/systemd/ukify",
