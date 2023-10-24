@@ -2232,9 +2232,9 @@ def install_uki(context: Context, kver: str, kimg: Path, token: str, partitions:
     else:
         if roothash:
             _, _, h = roothash.partition("=")
-            boot_binary = context.root / f"boot/EFI/Linux/{token}-{kver}-{h}{boot_count}.efi"
+            boot_binary = context.root / f"boot/EFI/Linux/{token}-{h}{boot_count}.efi"
         else:
-            boot_binary = context.root / f"boot/EFI/Linux/{token}-{kver}{boot_count}.efi"
+            boot_binary = context.root / f"boot/EFI/Linux/{token}{boot_count}.efi"
 
     # Make sure the parent directory where we'll be writing the UKI exists.
     with umask(~0o700):
