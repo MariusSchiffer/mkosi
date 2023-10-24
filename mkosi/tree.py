@@ -85,7 +85,7 @@ def copy_tree(
         "cp",
         "--recursive",
         "--dereference" if dereference else "--no-dereference",
-        f"--preserve=mode,timestamps,links{',ownership,xattr' if preserve else ''}",
+        f"--preserve=mode,timestamps,links{',ownership' if preserve else ''}",
         "--reflink=auto",
         src, dst,
     ]

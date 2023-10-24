@@ -1791,7 +1791,7 @@ def install_uki(context: Context, partitions: Sequence[Partition]) -> None:
             token = find_entry_token(context)
             if roothash:
                 _, _, h = roothash.partition("=")
-                boot_binary = context.root / f"boot/EFI/Linux/{token}-{kver}-{h}{boot_count}.efi"
+                boot_binary = context.root / f"boot/EFI/Linux/{token}-{h}{boot_count}.efi"
             else:
                 boot_binary = context.root / f"boot/EFI/Linux/{token}-{kver}{boot_count}.efi"
 
