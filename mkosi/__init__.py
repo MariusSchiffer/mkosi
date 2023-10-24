@@ -1371,7 +1371,7 @@ def install_uki(state: MkosiState, partitions: Sequence[Partition]) -> None:
             boot_binary = state.root / "efi/EFI/BOOT/BOOTX64.EFI"
         elif state.config.image_version:
             boot_binary = (
-                state.root / f"efi/EFI/Linux/{image_id}_{state.config.image_version}-{kver}{boot_count}.efi"
+                state.root / f"efi/EFI/Linux/{image_id}_{state.config.image_version}{boot_count}.efi"
             )
         elif roothash:
             _, _, h = roothash.partition("=")

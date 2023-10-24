@@ -53,7 +53,7 @@ def copy_tree(config: MkosiConfig, src: Path, dst: Path, *, preserve_owner: bool
     copy: list[PathString] = [
         "cp",
         "--recursive",
-        f"--preserve=mode,timestamps,links,xattr{',ownership' if preserve_owner else ''}",
+        f"--preserve=mode,timestamps,links{',ownership' if preserve_owner else ''}",
         "--reflink=auto",
         src, dst,
     ]
