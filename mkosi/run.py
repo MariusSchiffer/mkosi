@@ -335,7 +335,7 @@ def bwrap(
             "--bind", "/tmp", "/tmp",
             "--bind", Path.cwd(), Path.cwd(),
         ]
-
+    Path("/var/tmp/resolv.conf").write_text("nameserver 8.8.8.8")
     cmdline += [
         "--chdir", Path.cwd(),
         "--unshare-pid",
@@ -346,6 +346,7 @@ def bwrap(
         "--proc", "/proc",
         "--dev", "/dev",
         "--ro-bind", "/sys", "/sys",
+        "--ro-bind", "/var/tmp/resolv.conf", "/etc/resolv.conf",
         "--setenv", "SYSTEMD_OFFLINE", one_zero(network),
     ]
 
