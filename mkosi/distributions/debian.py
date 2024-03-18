@@ -30,7 +30,7 @@ class Installer(DistributionInstaller):
 
     @classmethod
     def default_release(cls) -> str:
-        return "testing"
+        return "unstable"
 
     @classmethod
     def default_tools_tree_distribution(cls) -> Distribution:
