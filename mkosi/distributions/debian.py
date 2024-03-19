@@ -69,6 +69,7 @@ class Installer(DistributionInstaller):
             "swtpm",
             "systemd-boot",
             "systemd-container",
+            "systemd-ukify",
             "systemd",
             "tar",
             "uidmap",
